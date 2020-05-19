@@ -1,6 +1,6 @@
-import {AggregateRoot} from "../AggregateRoot";
+import {AggregateRoot} from "../shared/base/AggregateRoot";
 import {Email} from "./Email";
-import {Uuid} from "../Uuid";
+import {Uuid} from "../shared/uuid/Uuid";
 
 export class User extends AggregateRoot {
 

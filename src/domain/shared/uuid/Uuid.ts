@@ -1,4 +1,4 @@
-import {ValueObject} from "./ValueObject";
+import {ValueObject} from "../base/ValueObject";
 
 export class Uuid extends ValueObject<string> {
     static create(value: string): Uuid {

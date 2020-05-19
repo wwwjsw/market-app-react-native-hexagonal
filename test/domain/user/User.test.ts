@@ -1,4 +1,4 @@
-import {Uuid} from "../../../src/domain/Uuid";
+import {Uuid} from "../../../src/domain/shared/uuid/Uuid";
 import {Email} from "../../../src/domain/user/Email";
 import {User} from "../../../src/domain/user/User";
 

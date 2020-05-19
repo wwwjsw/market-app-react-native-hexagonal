@@ -2,7 +2,7 @@ import {anything, capture, instance, mock, verify, when} from "ts-mockito";
 import {SignIn} from "../../../src/application/user/SignIn";
 import {AuthenticationService} from "../../../src/domain/user/AuthenticationService";
 import {User} from "../../../src/domain/user/User";
-import {Uuid} from "../../../src/domain/Uuid";
+import {Uuid} from "../../../src/domain/shared/uuid/Uuid";
 import {Email} from "../../../src/domain/user/Email";
 import {Password} from "../../../src/domain/user/Password";
 

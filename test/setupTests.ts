@@ -2,7 +2,7 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import {ValueObject} from "../src/domain/ValueObject";
+import {ValueObject} from "../src/domain/shared/base/ValueObject";
 
 declare global {
     namespace jest {

@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "title": "Cars"
+    },
+    {
+        "id": "2",
+        "title": "Electronics"
+    },
+    {
+        "id": "3",
+        "title": "Clothing"
+    },
+    {
+        "id": "4",
+        "title": "Home"
+    },
+    {
+        "id": "5",
+        "title": "Accessories"
+    }
+]

@@ -1,4 +1,4 @@
-import {ValueObject} from "../ValueObject";
+import {ValueObject} from "../shared/base/ValueObject";
 
 export class Email extends ValueObject<string>{
 
