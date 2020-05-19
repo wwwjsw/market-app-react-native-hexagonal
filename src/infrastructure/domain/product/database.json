@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "userId": "1",
+        "title": "Renault Stepway",
+        "description": "Super Car - Renault",
+        "categoryId": "1",
+        "images": [
+            "https://www.cdn.renault.com/content/dam/Renault/CO/personal-cars/sandero-stepway/fase2/design/nuevo-renault-stepway-blanco-glacial.jpg.ximg.l_full_m.smart.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ypa7uMqT5yVtIwEa8VmRe9imvbWRSClenXo-bkpa3ygdJUoP&s"
+        ],
+        "value": 28000000
+    },
+    {
+        "id": "2",
+        "userId": "1",
+        "title": "Mazda 3",
+        "description": "Super Car - Mazda",
+        "categoryId": "1",
+        "images": [
+            "https://www.diariomotor.com/imagenes/2019/02/mazda3-2019-01.jpg"
+        ],
+        "value": 78000000
+    },
+    {
+        "id": "3",
+        "userId": "2",
+        "title": "TV Samsung",
+        "description": "TV Samsung example",
+        "categoryId": "2",
+        "images": [
+            "https://media.aws.alkosto.com/media/catalog/product/cache/6/image/660x441/69ace863370f34bdf190e4e164b6e123/t/u/tu7000_utk1__010_front2_titan-gray.png",
+            "https://media.aws.alkosto.com/media/catalog/product/cache/6/image/660x441/69ace863370f34bdf190e4e164b6e123/t/u/tu7000_utk1__013_l-perspective2_titan-gray.png"
+        ],
+        "value": 2000000
+    }
+]
