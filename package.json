@@ -6,7 +6,8 @@
         "ios": "expo start --ios",
         "web": "expo start --web",
         "eject": "expo eject",
-        "test": "jest"
+        "test": "jest",
+        "test:coverage": "npm test -- --coverage"
     },
     "dependencies": {
         "expo": "~37.0.3",
@@ -28,6 +29,14 @@
     },
     "private": true,
     "jest": {
-        "preset": "jest-expo"
+        "preset": "jest-expo",
+        "setupFilesAfterEnv": [
+            "./test/setupTests.ts"
+        ],
+        "collectCoverageFrom": [
+            "src/application/**/*.{js,jsx,ts,tsx}",
+            "src/domain/**/*.{js,jsx,ts,tsx}",
+            "src/infrastructure/**/*Presenter.{js,jsx,ts,tsx}"
+        ]
     }
 }
