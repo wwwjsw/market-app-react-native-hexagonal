@@ -1,5 +1,5 @@
 
-import data from './database.json';
+import data from './categories.json';
 import {Uuid} from "../../../domain/shared/uuid/Uuid";
 import {CategoryRepository} from "../../../domain/category/CategoryRepository";
 import {Category} from "../../../domain/category/Category";

@@ -1,8 +1,5 @@
-
-import data from './database.json';
+import data from './products.json';
 import {Uuid} from "../../../domain/shared/uuid/Uuid";
-import {CategoryRepository} from "../../../domain/category/CategoryRepository";
-import {Category} from "../../../domain/category/Category";
 import {ProductRepository} from "../../../domain/product/ProductRepository";
 import {Product} from "../../../domain/product/Product";
 
