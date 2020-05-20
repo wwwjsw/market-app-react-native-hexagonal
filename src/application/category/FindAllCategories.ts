@@ -1,5 +1,5 @@
-import {CategoryRepository} from "../../domain/categories/CategoryRepository";
-import {Category} from "../../domain/categories/Category";
+import {CategoryRepository} from "../../domain/category/CategoryRepository";
+import {Category} from "../../domain/category/Category";
 
 export class FindAllCategories {
     constructor(private categoryRepository: CategoryRepository) {
