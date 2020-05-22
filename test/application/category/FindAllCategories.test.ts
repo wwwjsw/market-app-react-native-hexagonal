@@ -1,4 +1,4 @@
-import {InMemoryCategoryRepository} from "../../../src/infrastructure/domain/categories/InMemoryCategoryRepository";
+import {InMemoryCategoryRepository} from "../../../src/infrastructure/domain/category/InMemoryCategoryRepository";
 import {Uuid} from "../../../src/domain/shared/uuid/Uuid";
 import { FindAllCategories } from "../../../src/application/category/FindAllCategories";
 import { CategoryRepository } from "../../../src/domain/category/CategoryRepository";
