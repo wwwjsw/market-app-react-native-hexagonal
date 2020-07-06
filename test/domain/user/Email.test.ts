@@ -1,4 +1,4 @@
-import {Email, EmptyEmailError, InvalidEmailError} from "../../../src/domain/user/Email";
+import {Email, EmailIsEmpty, EmailIsInvalid} from "../../../src/domain/user/Email";
 
 describe('Email value object', () => {
 
@@ -7,7 +7,7 @@ describe('Email value object', () => {
             Email.create('');
         }
 
-        expect(execute).toThrow(EmptyEmailError);
+        expect(execute).toThrow(EmailIsEmpty);
     });
 
     test('Email cannot be a invalid, missing the @', () => {
@@ -15,7 +15,7 @@ describe('Email value object', () => {
             Email.create('juandemo.com');
         }
 
-        expect(execute).toThrow(InvalidEmailError);
+        expect(execute).toThrow(EmailIsInvalid);
     });
 
     test('Email cannot be a invalid, missing the @', () => {
@@ -23,7 +23,7 @@ describe('Email value object', () => {
             Email.create('juan@democom');
         }
 
-        expect(execute).toThrow(InvalidEmailError);
+        expect(execute).toThrow(EmailIsInvalid);
     });
 
 

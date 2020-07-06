@@ -1,4 +1,4 @@
-import {InvalidLengthPasswordError, Password} from "../../../src/domain/user/Password";
+import {PasswordHasAnInvalidLength, Password} from "../../../src/domain/user/Password";
 
 describe('A password should', () => {
 
@@ -7,7 +7,7 @@ describe('A password should', () => {
             Password.create('');
         };
 
-        expect(execute).toThrow(InvalidLengthPasswordError);
+        expect(execute).toThrow(PasswordHasAnInvalidLength);
     });
 
     test('can create a valid password', () => {

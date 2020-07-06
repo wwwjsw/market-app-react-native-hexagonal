@@ -4,7 +4,7 @@ export class Password extends ValueObject<string>{
 
     static create(value: string): Password {
         if (Password.hasAnInvalidLength(value)) {
-            throw new InvalidLengthPasswordError();
+            throw new PasswordHasAnInvalidLength();
         }
 
         return new Password(value);
@@ -15,4 +15,4 @@ export class Password extends ValueObject<string>{
     }
 }
 
-export class InvalidLengthPasswordError extends Error {}
+export class PasswordHasAnInvalidLength extends Error {}

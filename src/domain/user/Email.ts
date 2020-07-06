@@ -4,11 +4,11 @@ export class Email extends ValueObject<string>{
 
     static create(value: string): Email {
         if (Email.isEmpty(value)) {
-            throw new EmptyEmailError();
+            throw new EmailIsEmpty();
         }
 
         if (Email.isAnInvalidExpresion(value)) {
-            throw new InvalidEmailError();
+            throw new EmailIsInvalid();
         }
 
         return new Email(value);
@@ -24,5 +24,5 @@ export class Email extends ValueObject<string>{
 
 }
 
-export class EmptyEmailError extends Error {}
-export class InvalidEmailError extends Error {}
+export class EmailIsEmpty extends Error {}
+export class EmailIsInvalid extends Error {}
