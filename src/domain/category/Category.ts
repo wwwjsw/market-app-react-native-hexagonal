@@ -1,33 +1,16 @@
 import {AggregateRoot} from "../shared/base/AggregateRoot";
 import {Uuid} from "../shared/uuid/Uuid";
+import {CategoryTitle} from "./CategoryTitle";
 
 export class Category extends AggregateRoot {
-    private _title!: string;
+    private _title: CategoryTitle;
 
-    constructor(id: Uuid, title: string) {
+    constructor(id: Uuid, title: CategoryTitle) {
         super(id);
-        this.setTitle(title);
-    }
-
-    setTitle(title: string): void {
-        if (title === '') {
-            throw new CategoryTitleIsRequired();
-        }
-
-        if (title.length > 100) {
-            throw new CategoryTitleMaxLength();
-        }
-
         this._title = title;
     }
 
-    get title(): string {
+    get title(): CategoryTitle {
         return this._title;
     }
-}
-
-export class CategoryTitleIsRequired extends Error {
-}
-
-export class CategoryTitleMaxLength extends Error {
 }

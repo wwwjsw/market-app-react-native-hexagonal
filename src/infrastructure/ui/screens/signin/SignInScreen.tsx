@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    Image,
+    Image, KeyboardAvoidingView,
     StyleSheet,
     View
 } from "react-native";
@@ -17,16 +17,17 @@ export default function SignInScreen() {
             <SafeArea>
                 <Image source={require('../../assets/logo.png')} style={styles.logo}/>
                 <TextLogo>MarketPlace App</TextLogo>
-                <From>
-                    <InputComponent style={styles.inputEmail} placeholder={'Email or Username'}/>
-                    <PasswordComponent style={styles.inputEmail} placeholder={'Password'}/>
-                    <ButtonComponent text={'Login to my Account'}/>
-                    <TextNewUserContainer>
-                        <TextNewUser>New User?</TextNewUser>
-                        <TextSignUp>Signup now</TextSignUp>
-                    </TextNewUserContainer>
-
-                </From>
+                <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+                    <From>
+                        <InputComponent style={styles.inputEmail} placeholder={'Email or Username'}/>
+                        <PasswordComponent style={styles.inputEmail} placeholder={'Password'}/>
+                        <ButtonComponent text={'Login to my Account'}/>
+                        <TextNewUserContainer>
+                            <TextNewUser>New User?</TextNewUser>
+                            <TextSignUp>Signup now</TextSignUp>
+                        </TextNewUserContainer>
+                    </From>
+                </KeyboardAvoidingView>
             </SafeArea>
         </View>
     );
@@ -66,12 +67,15 @@ const TextSignUp = styled.Text`
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'red'
     },
     backgroundImage: {
         position: 'absolute',
         flex: 1,
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        width: '100%',
+        height: '100%',
     },
     logo: {
         marginTop: 76,
