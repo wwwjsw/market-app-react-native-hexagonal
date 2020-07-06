@@ -16,7 +16,7 @@ export default function SignInScreen() {
             <Image style={styles.backgroundImage} source={require('../../assets/background.png')}/>
             <SafeArea>
                 <Image source={require('../../assets/logo.png')} style={styles.logo}/>
-                <TextLogo>MarketPlace App</TextLogo>
+                <TextLogo>Market App</TextLogo>
                 <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
                     <From>
                         <InputComponent style={styles.inputEmail} placeholder={'Email or Username'}/>
