@@ -47,9 +47,7 @@ const getMockData = () => {
         const images = row.images;
         const value = row.value;
 
-        return new Product(
-            id, userId, title, description, categoryId, images, value
-        );
+        return new Product(id, userId, title, description, categoryId, images, value);
     });
     return database;
 };

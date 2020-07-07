@@ -1,15 +1,18 @@
 import {Uuid} from "../shared/Uuid";
 import {AggregateRoot} from "../shared/AggregateRoot";
+import {ProductTitle} from "./ProductTitle";
+import {ProductDescription} from "./ProductDescription";
+import {ProductValue} from "./ProductValue";
 
 export class Product extends AggregateRoot {
     private _userId: Uuid;
-    private _title: string;
-    private _description: string;
+    private _title: ProductTitle;
+    private _description: ProductDescription;
     private _categoryId: Uuid;
     private _images: string[];
-    private _value: number;
+    private _value: ProductValue;
 
-    constructor(id: Uuid, userId: Uuid, title: string, description: string, categoryId: Uuid, images: string[], value: number) {
+    constructor(id: Uuid, userId: Uuid, title: ProductTitle, description: ProductDescription, categoryId: Uuid, images: string[], value: ProductValue) {
         super(id);
         this._userId = userId;
         this._title = title;
@@ -23,11 +26,11 @@ export class Product extends AggregateRoot {
         return this._userId;
     }
 
-    get title(): string {
+    get title(): ProductTitle {
         return this._title;
     }
 
-    get description(): string {
+    get description(): ProductDescription {
         return this._description;
     }
 
@@ -39,7 +42,7 @@ export class Product extends AggregateRoot {
         return this._images;
     }
 
-    get value(): number {
+    get value(): ProductValue {
         return this._value;
     }
 }

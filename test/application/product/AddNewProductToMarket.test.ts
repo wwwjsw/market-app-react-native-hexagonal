@@ -4,6 +4,9 @@ import {InMemoryProductRepository} from "../../../src/infrastructure/domain/prod
 import {AddNewProductToMarket} from "../../../src/application/product/AddNewProductToMarket";
 import {UuidService} from "../../../src/domain/shared/UuidService";
 import {mock, instance, when} from "ts-mockito";
+import {ProductDescription} from "../../../src/domain/product/ProductDescription";
+import {ProductTitle} from "../../../src/domain/product/ProductTitle";
+import {ProductValue} from "../../../src/domain/product/ProductValue";
 
 describe('AddNewProduct should', () => {
 
@@ -70,10 +73,10 @@ describe('AddNewProduct should', () => {
         expect(result).not.toBeUndefined();
         expect(result!.id).toBeEquals(id);
         expect(result!.userId).toBeEquals(userId);
-        expect(result!.title).toBe(title);
-        expect(result!.description).toBe(description);
+        expect(result!.title).toBeEquals(ProductTitle.create(title));
+        expect(result!.description).toBeEquals(ProductDescription.create(description));
         expect(result!.categoryId).toBeEquals(categoryId);
         expect(result!.images).toBe(images);
-        expect(result!.value).toBe(value);
+        expect(result!.value).toBeEquals(ProductValue.create(value));
     }
 });
