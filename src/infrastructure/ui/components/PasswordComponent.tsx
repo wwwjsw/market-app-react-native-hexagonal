@@ -1,12 +1,13 @@
 import React, {FunctionComponent} from "react";
-import {StyleSheet, TextInput, TextStyle} from "react-native";
+import {NativeSyntheticEvent, StyleSheet, TextInputChangeEventData, TextStyle} from "react-native";
 import styled from "styled-components/native";
-import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 type PasswordProps = {
     style?: TextStyle | TextStyle[],
-    placeholder?: string
+    value?: string,
+    placeholder?: string,
+    onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
 }
 
 export const PasswordComponent: FunctionComponent<PasswordProps> = (props) => {
@@ -14,7 +15,11 @@ export const PasswordComponent: FunctionComponent<PasswordProps> = (props) => {
     return (
         <PasswordContainer style={passedStyles}>
             <PasswordInput
+                secureTextEntry={true}
                 placeholder={props.placeholder}
+                placeholderTextColor={'#FFFFFF'}
+                value={props.value}
+                onChange={props.onChange}
             />
             <AntDesign style={styles.icon} name="eye" size={24} color="white" />
         </PasswordContainer>
@@ -45,7 +50,6 @@ const styles = StyleSheet.create({
     icon: {
         width:24,
         borderColor: 'red',
-        borderWidth: 1,
         right: -10
     }
 })

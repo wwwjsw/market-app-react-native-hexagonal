@@ -1,9 +1,10 @@
 import React, {FunctionComponent} from "react";
-import {Text, StyleSheet, TextStyle, View} from "react-native";
+import {Text, StyleSheet, TextStyle, View, TouchableHighlight, GestureResponderEvent} from "react-native";
 
 type ButtonComponentProps = {
     style?: TextStyle | TextStyle[],
     text: string,
+    onPress?: (event: GestureResponderEvent) => void
 }
 
 export const ButtonComponent: FunctionComponent<ButtonComponentProps> = (props) => {
@@ -17,9 +18,11 @@ export const ButtonComponent: FunctionComponent<ButtonComponentProps> = (props) 
     ];
 
     return (
-        <View style={stylesToApply}>
-            <Text>{props.text}</Text>
-        </View>
+        <TouchableHighlight onPress={props.onPress} underlayColor="white">
+            <View style={stylesToApply}>
+                <Text>{props.text}</Text>
+            </View>
+        </TouchableHighlight>
     );
 };
 

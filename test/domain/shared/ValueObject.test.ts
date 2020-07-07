@@ -1,6 +1,5 @@
 import {ValueObject} from "../../../src/domain/shared/ValueObject";
 
-
 class TestValueObject extends ValueObject <string> {
     static create(value: string) {
         return new TestValueObject(value);
