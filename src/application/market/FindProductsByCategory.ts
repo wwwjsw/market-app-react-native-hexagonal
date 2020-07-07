@@ -1,5 +1,5 @@
 import {ProductRepository} from "../../domain/product/ProductRepository";
-import {Uuid} from "../../domain/shared/uuid/Uuid";
+import {Uuid} from "../../domain/shared/Uuid";
 import {Product} from "../../domain/product/Product";
 
 export class FindProductsByCategory {

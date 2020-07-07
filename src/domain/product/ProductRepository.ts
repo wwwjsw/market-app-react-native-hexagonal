@@ -1,4 +1,4 @@
-import {Uuid} from "../shared/uuid/Uuid";
+import {Uuid} from "../shared/Uuid";
 import {Product} from "./Product";
 
 export interface ProductRepository {

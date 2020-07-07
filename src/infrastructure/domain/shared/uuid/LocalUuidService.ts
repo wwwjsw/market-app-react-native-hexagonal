@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import {UuidService} from "../../../../domain/shared/uuid/UuidService";
-import {Uuid} from "../../../../domain/shared/uuid/Uuid";
+import {UuidService} from "../../../../domain/shared/UuidService";
+import {Uuid} from "../../../../domain/shared/Uuid";
 
 export class LocalUuidService implements UuidService {
     nextId(): Uuid {

@@ -1,5 +1,5 @@
 import data from './products.json';
-import {Uuid} from "../../../domain/shared/uuid/Uuid";
+import {Uuid} from "../../../domain/shared/Uuid";
 import {ProductRepository} from "../../../domain/product/ProductRepository";
 import {Product} from "../../../domain/product/Product";
 

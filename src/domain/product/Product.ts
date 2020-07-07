@@ -1,5 +1,5 @@
-import {Uuid} from "../shared/uuid/Uuid";
-import {AggregateRoot} from "../shared/base/AggregateRoot";
+import {Uuid} from "../shared/Uuid";
+import {AggregateRoot} from "../shared/AggregateRoot";
 
 export class Product extends AggregateRoot {
     private _userId: Uuid;

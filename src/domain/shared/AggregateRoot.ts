@@ -1,4 +1,4 @@
-import {Uuid} from "../uuid/Uuid";
+import {Uuid} from "./Uuid";
 
 export abstract class AggregateRoot {
     private readonly _id: Uuid;

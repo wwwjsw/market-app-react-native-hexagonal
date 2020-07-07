@@ -1,4 +1,4 @@
-import {Uuid} from "../../../src/domain/shared/uuid/Uuid";
+import {Uuid} from "../../../src/domain/shared/Uuid";
 import {FindAllProducts} from "../../../src/application/market/FindAllProducts";
 import {ProductRepository} from "../../../src/domain/product/ProductRepository";
 import {Product} from "../../../src/domain/product/Product";

@@ -1,4 +1,4 @@
-import {InvalidUuidError, Uuid} from "../../src/domain/shared/uuid/Uuid";
+import {InvalidUuidError, Uuid} from "../../../src/domain/shared/Uuid";
 
 describe('Uuid', () => {
 

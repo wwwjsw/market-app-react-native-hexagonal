@@ -2,7 +2,7 @@ import {AuthenticationService, InvalidCredentialsError} from "../../../domain/us
 import {Password} from "../../../domain/user/Password";
 import {Email} from "../../../domain/user/Email";
 import {User} from "../../../domain/user/User";
-import {Uuid} from "../../../domain/shared/uuid/Uuid";
+import {Uuid} from "../../../domain/shared/Uuid";
 import data from './users.json';
 
 export class InMemoryAuthenticationService implements AuthenticationService {

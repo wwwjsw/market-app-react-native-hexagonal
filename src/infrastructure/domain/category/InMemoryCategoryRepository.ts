@@ -1,8 +1,9 @@
 
 import data from './categories.json';
-import {Uuid} from "../../../domain/shared/uuid/Uuid";
+import {Uuid} from "../../../domain/shared/Uuid";
 import {CategoryRepository} from "../../../domain/category/CategoryRepository";
 import {Category} from "../../../domain/category/Category";
+import {CategoryTitle} from "../../../domain/category/CategoryTitle";
 
 export class InMemoryCategoryRepository implements CategoryRepository {
     private _database: Category[];
@@ -19,7 +20,7 @@ export class InMemoryCategoryRepository implements CategoryRepository {
 const getMockData = () => {
     const database: Category[] = data.map((row) => {
         const id = Uuid.create(row.id);
-        const title = row.title;
+        const title = CategoryTitle.create(row.title);
 
         return new Category(id, title);
     });

@@ -1,8 +1,9 @@
 import {InMemoryCategoryRepository} from "../../../src/infrastructure/domain/category/InMemoryCategoryRepository";
-import {Uuid} from "../../../src/domain/shared/uuid/Uuid";
+import {Uuid} from "../../../src/domain/shared/Uuid";
 import { FindAllCategories } from "../../../src/application/category/FindAllCategories";
 import { CategoryRepository } from "../../../src/domain/category/CategoryRepository";
 import { Category } from "../../../src/domain/category/Category";
+import {CategoryTitle} from "../../../src/domain/category/CategoryTitle";
 
 describe('FindAllCategories should', () => {
 
@@ -30,6 +31,6 @@ describe('FindAllCategories should', () => {
     function then_the_result_has_values() {
         expect(results.length).toBe(5);
         expect(results[0].id).toBeEquals(Uuid.create('1'));
-        expect(results[0].title).toBe('Cars');
+        expect(results[0].title).toBeEquals(CategoryTitle.create('Cars'));
     }
 });

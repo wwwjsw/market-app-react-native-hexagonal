@@ -1,4 +1,4 @@
-import {ValueObject} from "../shared/base/ValueObject";
+import {ValueObject} from "../shared/ValueObject";
 
 export class Password extends ValueObject<string>{
 

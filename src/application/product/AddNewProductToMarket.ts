@@ -1,9 +1,9 @@
 import {ProductRepository} from "../../domain/product/ProductRepository";
-import {Uuid} from "../../domain/shared/uuid/Uuid";
-import {UuidService} from "../../domain/shared/uuid/UuidService";
+import {Uuid} from "../../domain/shared/Uuid";
+import {UuidService} from "../../domain/shared/UuidService";
 import {Product} from "../../domain/product/Product";
 
-export class AddNewProduct {
+export class AddNewProductToMarket {
     constructor(private productRepository: ProductRepository, private uuidService: UuidService) {
     }
 

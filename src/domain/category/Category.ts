@@ -1,5 +1,5 @@
-import {AggregateRoot} from "../shared/base/AggregateRoot";
-import {Uuid} from "../shared/uuid/Uuid";
+import {AggregateRoot} from "../shared/AggregateRoot";
+import {Uuid} from "../shared/Uuid";
 import {CategoryTitle} from "./CategoryTitle";
 
 export class Category extends AggregateRoot {

@@ -1,13 +1,13 @@
-import {Uuid} from "../../../src/domain/shared/uuid/Uuid";
+import {Uuid} from "../../../src/domain/shared/Uuid";
 import {ProductRepository} from "../../../src/domain/product/ProductRepository";
 import {InMemoryProductRepository} from "../../../src/infrastructure/domain/product/InMemoryProductRepository";
-import {AddNewProduct} from "../../../src/application/product/AddNewProduct";
-import {UuidService} from "../../../src/domain/shared/uuid/UuidService";
+import {AddNewProductToMarket} from "../../../src/application/product/AddNewProductToMarket";
+import {UuidService} from "../../../src/domain/shared/UuidService";
 import {mock, instance, when} from "ts-mockito";
 
 describe('AddNewProduct should', () => {
 
-    let action: AddNewProduct;
+    let action: AddNewProductToMarket;
     let uuidService: UuidService;
     let productRepository: ProductRepository;
 
@@ -32,7 +32,7 @@ describe('AddNewProduct should', () => {
             value
         );
 
-        await then_the_the_repository_has_this_data(
+        await then_the_the_repository_was_called_with_this_data(
             id,
             userId,
             title,
@@ -46,7 +46,7 @@ describe('AddNewProduct should', () => {
     function given_an_action() {
         uuidService = mock<UuidService>();
         productRepository = new InMemoryProductRepository();
-        action = new AddNewProduct(productRepository, instance(uuidService));
+        action = new AddNewProductToMarket(productRepository, instance(uuidService));
     }
 
     function and_this_uuid(uuid: Uuid) {
@@ -64,7 +64,7 @@ describe('AddNewProduct should', () => {
         );
     }
 
-    async function then_the_the_repository_has_this_data(id: Uuid, userId: Uuid, title: string, description: string, categoryId: Uuid, images: string[], value: number) {
+    async function then_the_the_repository_was_called_with_this_data(id: Uuid, userId: Uuid, title: string, description: string, categoryId: Uuid, images: string[], value: number) {
         const result = await productRepository.findById(id);
 
         expect(result).not.toBeUndefined();
