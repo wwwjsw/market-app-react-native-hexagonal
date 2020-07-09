@@ -1,26 +1,34 @@
-import React, {useState} from "react";
-import {
-    Image, KeyboardAvoidingView,
-    StyleSheet,
-    View
-} from "react-native";
+import React, {useContext, useState} from "react";
+import {KeyboardAvoidingView, Text} from "react-native";
 import styled from 'styled-components/native';
 import {SafeArea} from "../../components/SafeArea";
 import {InputComponent} from "../../components/InputComponent";
 import {ButtonComponent} from "../../components/ButtonComponent";
 import {PasswordComponent} from "../../components/PasswordComponent";
+import AppContext from "../../AppContext";
+import {SignInView} from "./SignInView";
+import {OnSignInUser} from "./OnSignInUser";
 
 export default function SignInScreen() {
 
+    const appContext = useContext(AppContext);
+
     const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [error, setError] = useState('');
 
-
-    const handleLogin = () => {
-
+    const view: SignInView = {
+        showError: setError,
+        showEmailError: setEmailError,
+        showPasswordError: setPasswordError,
+        goHome: () => { console.log('goHome'); }
     };
-    console.log(email);
-    console.log(password);
+
+    const onSignInUser = new OnSignInUser(view, appContext.provider.signIn);
+
+    const handleLogin = () => onSignInUser.handle(email, password);
 
     return (
         <Container>
@@ -30,6 +38,9 @@ export default function SignInScreen() {
                 <TextLogo>Market App</TextLogo>
                 <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
                     <From>
+                        <Text>{emailError}</Text>
+                        <Text>{passwordError}</Text>
+                        <Text>{error}</Text>
                         <FormItemContainer>
                             <InputComponent
                                 placeholder={'Email or Username'}
@@ -46,7 +57,7 @@ export default function SignInScreen() {
                         </FormItemContainer>
                         <ButtonComponent
                             text={'Login to my Account'}
-                            onPress={() => {console.log('sdsd')}}
+                            onPress={() => { handleLogin(); }}
                         />
                         <TextNewUserContainer>
                             <TextNewUser>New User?</TextNewUser>
