@@ -4,7 +4,7 @@ import {InvalidCredentialsError} from "../../../../domain/user/AuthenticationSer
 import {EmailIsEmpty, EmailIsInvalid} from "../../../../domain/user/Email";
 import {PasswordHasAnInvalidLength} from "../../../../domain/user/Password";
 
-export class OnSignInUser {
+export class OnSignInUserPresenter {
     private _signIn: SignIn;
     private _view: SignInView;
 
@@ -14,19 +14,16 @@ export class OnSignInUser {
     }
 
     async handle(email: string, password: string) {
-        console.log(email);
-        console.log(password);
         try {
             await this.tryToSigIn(email, password);
         } catch (e) {
-            console.log('eerrir');
-            console.log(e);
             this.handleError(e);
         }
     }
 
     private async tryToSigIn(email: string, password: string) {
         await this._signIn.execute(email, password);
+        this._view.goHome();
     }
 
     private handleError(error: Error) {

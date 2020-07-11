@@ -1,36 +1,35 @@
 import React, {FunctionComponent} from "react";
-import {NativeSyntheticEvent, StyleSheet, TextInput, TextInputChangeEventData, TextStyle} from "react-native";
+import {NativeSyntheticEvent, TextInputChangeEventData, View,} from "react-native";
+import styled from "styled-components/native";
+import {InputControl} from "./styled/InputControl";
 
 type InputComponentProps = {
-    style?: TextStyle | TextStyle[],
     value?: string,
     placeholder?: string,
+    error?: string;
     onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
 }
 
 export const InputComponent: FunctionComponent<InputComponentProps> = (props) => {
-    const passedStyles = Array.isArray(props.style) ? Object.assign({}, ...props.style) : props.style;
-
     return (
-        <TextInput
-            style={[styles.all, {...passedStyles}]}
-            placeholder={props.placeholder}
-            placeholderTextColor={'#FFFFFF'}
-            value={props.value}
-            onChange={props.onChange}
-        />
+        <InputControl error={props.error}>
+            <Input
+                placeholder={props.placeholder}
+                placeholderTextColor={'#FFFFFF'}
+                value={props.value}
+                autoCapitalize = 'none'
+                onChange={props.onChange}
+            />
+        </InputControl>
     );
 };
 
-const styles = StyleSheet.create({
-    all: {
-        paddingLeft: 22,
-        paddingRight: 22,
-        width: '100%',
-        height: 40,
-        color: '#FFFFFF',
-        borderColor: '#FFFFFF',
-        borderWidth: 1,
-        borderRadius: 20,
-    }
-})
+const Input = styled.TextInput`
+    padding-left: 22px;
+    padding-right: 22px;
+    height: 40px;
+    color: #FFFFFF;
+`;
+
+
+

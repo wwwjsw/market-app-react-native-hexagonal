@@ -7,15 +7,21 @@ import {provider} from "../Provider";
 import SignInScreen from "./screens/signin/SignInScreen";
 import HomeScreen from './screens/home/HomeScreen';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+    SignIn: undefined;
+    SignUp: undefined;
+    Home: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function Main() {
     return (
         <AppContext.Provider value={{provider}}>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="SigIn">
-                    <Stack.Screen name="SigIn" component={SignInScreen} options={{headerShown: false}}/>
-                    <Stack.Screen name="SigUp" component={SignUpScreen}/>
+                <Stack.Navigator initialRouteName="SignIn">
+                    <Stack.Screen name="SignIn" component={SignInScreen} options={{headerShown: false}}/>
+                    <Stack.Screen name="SignUp" component={SignUpScreen}/>
                     <Stack.Screen name="Home" component={HomeScreen}/>
                 </Stack.Navigator>
             </NavigationContainer>

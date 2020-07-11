@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {KeyboardAvoidingView, Text} from "react-native";
+import {KeyboardAvoidingView, Text, View} from "react-native";
 import styled from 'styled-components/native';
 import {SafeArea} from "../../components/SafeArea";
 import {InputComponent} from "../../components/InputComponent";
@@ -7,26 +7,37 @@ import {ButtonComponent} from "../../components/ButtonComponent";
 import {PasswordComponent} from "../../components/PasswordComponent";
 import AppContext from "../../AppContext";
 import {SignInView} from "./SignInView";
-import {OnSignInUser} from "./OnSignInUser";
+import {OnSignInUserPresenter} from "./OnSignInUserPresenter";
+import {StackNavigationProp} from "@react-navigation/stack/lib/typescript/src/types";
+import {RootStackParamList} from "../../Main";
 
-export default function SignInScreen() {
+type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SignIn'>;
+type SignInScreenProps = {
+    navigation: ProfileScreenNavigationProp;
+};
+
+const CleanErrors = {
+    error: '',
+    passwordError: '',
+    emailError: ''
+};
+
+export default function SignInScreen(props: SignInScreenProps) {
 
     const appContext = useContext(AppContext);
 
     const [email, setEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [error, setError] = useState('');
+    const [errors, setErrors] = useState(CleanErrors);
 
     const view: SignInView = {
-        showError: setError,
-        showEmailError: setEmailError,
-        showPasswordError: setPasswordError,
-        goHome: () => { console.log('goHome'); }
+        showError: message => setErrors({...CleanErrors, error: message}),
+        showEmailError: message => setErrors({...CleanErrors, emailError: message}),
+        showPasswordError: message => setErrors({...CleanErrors, passwordError: message}),
+        goHome:  () => { props.navigation.navigate('Home')}
     };
 
-    const onSignInUser = new OnSignInUser(view, appContext.provider.signIn);
+    const onSignInUser = new OnSignInUserPresenter(view, appContext.provider.signIn);
 
     const handleLogin = () => onSignInUser.handle(email, password);
 
@@ -38,13 +49,12 @@ export default function SignInScreen() {
                 <TextLogo>Market App</TextLogo>
                 <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
                     <From>
-                        <Text>{emailError}</Text>
-                        <Text>{passwordError}</Text>
-                        <Text>{error}</Text>
+                        {errors.error === undefined || errors.error.length > 0 && <ErrorText>{errors.error}</ErrorText>}
                         <FormItemContainer>
                             <InputComponent
                                 placeholder={'Email or Username'}
                                 value={email}
+                                error={errors.emailError}
                                 onChange={(e) => setEmail(e.nativeEvent.text)}
                             />
                         </FormItemContainer>
@@ -52,6 +62,7 @@ export default function SignInScreen() {
                             <PasswordComponent
                                 placeholder={'Password'}
                                 value={password}
+                                error={errors.passwordError}
                                 onChange={(e) => setPassword(e.nativeEvent.text)}
                             />
                         </FormItemContainer>
@@ -110,16 +121,22 @@ const TextNewUserContainer = styled.View`
 `;
 
 const TextNewUser = styled.Text`
-  color: #FFFFFF;
-  opacity: 0.7;
+    color: #FFFFFF;
+    opacity: 0.7;
 `;
 
 const TextSignUp = styled.Text`
-  color: #FFFFFF;
-  margin-left: 5px;
+    color: #FFFFFF;
+    margin-left: 5px;
 `;
 
 const FormItemContainer = styled.View`
     width: 100%;
     margin-bottom: 20px;
+`;
+
+
+const ErrorText = styled.Text`
+    color: #FF0000;
+    margin-bottom: 10px;
 `;

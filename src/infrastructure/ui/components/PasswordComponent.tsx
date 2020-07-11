@@ -1,36 +1,37 @@
 import React, {FunctionComponent} from "react";
-import {NativeSyntheticEvent, StyleSheet, TextInputChangeEventData, TextStyle} from "react-native";
+import {NativeSyntheticEvent, StyleSheet, TextInputChangeEventData} from "react-native";
 import styled from "styled-components/native";
-import { AntDesign } from '@expo/vector-icons';
+import {AntDesign} from '@expo/vector-icons';
+import {InputControl} from "./styled/InputControl";
 
 type PasswordProps = {
-    style?: TextStyle | TextStyle[],
     value?: string,
     placeholder?: string,
+    error?: string;
     onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
 }
 
 export const PasswordComponent: FunctionComponent<PasswordProps> = (props) => {
-    const passedStyles = Array.isArray(props.style) ? Object.assign({}, ...props.style) : props.style
     return (
-        <PasswordContainer style={passedStyles}>
-            <PasswordInput
-                secureTextEntry={true}
-                placeholder={props.placeholder}
-                placeholderTextColor={'#FFFFFF'}
-                value={props.value}
-                onChange={props.onChange}
-            />
-            <AntDesign style={styles.icon} name="eye" size={24} color="white" />
-        </PasswordContainer>
+        <InputControl error={props.error}>
+            <PasswordControl>
+                <PasswordInput
+                    secureTextEntry={true}
+                    placeholder={props.placeholder}
+                    placeholderTextColor={'#FFFFFF'}
+                    value={props.value}
+                    autoCapitalize = 'none'
+                    onChange={props.onChange}
+                />
+                <AntDesign style={styles.icon} name="eye" size={24} color="white"/>
+            </PasswordControl>
+        </InputControl>
     );
 };
 
-const PasswordContainer = styled.View`
+const PasswordControl = styled.View`
     width: 100%;
     height: 40px;
-    border-color: #FFFFFF;
-    border-width: 1px;
     border-radius: 20px;
     padding-left: 22px;
     padding-right: 22px;
@@ -48,9 +49,8 @@ const PasswordInput = styled.TextInput`
 
 const styles = StyleSheet.create({
     icon: {
-        width:24,
+        width: 24,
         borderColor: 'red',
         right: -10
     }
-})
-
+});
