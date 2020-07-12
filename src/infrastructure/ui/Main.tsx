@@ -19,10 +19,10 @@ export default function Main() {
     return (
         <AppContext.Provider value={{provider}}>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="SignIn">
+                <Stack.Navigator initialRouteName="Home">
                     <Stack.Screen name="SignIn" component={SignInScreen} options={{headerShown: false}}/>
                     <Stack.Screen name="SignUp" component={SignUpScreen}/>
-                    <Stack.Screen name="Home" component={HomeScreen}/>
+                    <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </AppContext.Provider>
