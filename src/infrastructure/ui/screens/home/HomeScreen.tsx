@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, ScrollView} from "react-native";
+import {Text} from "react-native";
 import {SafeArea} from "../../components/SafeArea";
 import {TitleComponent} from "../../components/TitleComponent";
 import CategoryList from "./components/CategroyList";
@@ -10,7 +10,6 @@ import {Category} from "../../../../domain/category/Category";
 import {Product} from "../../../../domain/product/Product";
 import {HomeView} from "./HomeView";
 import AppContext from "../../AppContext";
-
 
 const HomeScreen = () => {
 
@@ -27,14 +26,7 @@ const HomeScreen = () => {
     const onHomeScreenRender = new OnHomeScreenRender(homeView, appContext.provider.findAllCategories, appContext.provider.findAllProducts);
 
     useEffect(() => {
-
-        async function fetchData() {
-            await onHomeScreenRender.handle();
-        }
-        fetchData();
-
-
-
+        onHomeScreenRender.handle();
     }, []);
 
     return (
@@ -43,7 +35,7 @@ const HomeScreen = () => {
                 <Text>aca va el buscador</Text>
                 <TitleComponent>Recently Added</TitleComponent>
                 <CategoryList categories={categories}/>
-                <ProductList/>
+                <ProductList products={products}/>
             </SafeArea>
         </Page>
     );

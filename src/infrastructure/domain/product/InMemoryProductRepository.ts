@@ -2,6 +2,9 @@ import data from './products.json';
 import {Uuid} from "../../../domain/shared/Uuid";
 import {ProductRepository} from "../../../domain/product/ProductRepository";
 import {Product} from "../../../domain/product/Product";
+import {ProductTitle} from "../../../domain/product/ProductTitle";
+import {ProductDescription} from "../../../domain/product/ProductDescription";
+import {ProductValue} from "../../../domain/product/ProductValue";
 
 export class InMemoryProductRepository implements ProductRepository {
     private _database: Product[];
@@ -41,11 +44,11 @@ const getMockData = () => {
     const database: Product[] = data.map((row) => {
         const id = Uuid.create(row.id);
         const userId = Uuid.create(row.userId);
-        const title = row.title;
-        const description = row.description;
+        const title = ProductTitle.create(row.title);
+        const description = ProductDescription.create(row.description);
         const categoryId = Uuid.create(row.categoryId);
         const images = row.images;
-        const value = row.value;
+        const value = ProductValue.create(row.value);
 
         return new Product(id, userId, title, description, categoryId, images, value);
     });

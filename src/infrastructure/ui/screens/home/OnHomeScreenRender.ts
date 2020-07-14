@@ -1,7 +1,4 @@
 import {SignIn} from "../../../../application/user/SignIn";
-import {InvalidCredentialsError} from "../../../../domain/user/AuthenticationService";
-import {EmailIsEmpty, EmailIsInvalid} from "../../../../domain/user/Email";
-import {PasswordHasAnInvalidLength} from "../../../../domain/user/Password";
 import {HomeView} from "./HomeView";
 import {FindAllCategories} from "../../../../application/category/FindAllCategories";
 import {FindAllProducts} from "../../../../application/market/FindAllProducts";
@@ -23,12 +20,12 @@ export class OnHomeScreenRender {
             await this.tryToLoadProducts();
         } catch (e) {
            //todo manejo de errores
+            console.log(e);
         }
     }
 
     private async tryToLoadCategories() {
         const categories = await this.findAllCategories.execute();
-        console.log(categories);
         this.view.showCategories(categories);
     }
 

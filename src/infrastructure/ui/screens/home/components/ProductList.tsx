@@ -1,38 +1,25 @@
 import React from 'react';
-import {Text, ScrollView} from "react-native";
+import {Dimensions, ScrollView, View} from "react-native";
 import styled from "styled-components/native";
+import {ProductItem} from './ProductItem';
+import {Product} from "../../../../../domain/product/Product";
 import {Column, Row} from "../../../components/Grid";
-import {Product} from "./Product";
 
-const ProductList = () => {
+type ProductListProps = {
+    products: Product[];
+};
+
+const ProductList = (props: ProductListProps) => {
     return (
         <CategoryContainer>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-            >
-                <Row>
-                    <Column>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                    </Column>
-                    <Column>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                        <Product></Product>
-                    </Column>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <Row style={{flexWrap:'wrap'}}>
+                        {props.products.map((product) => {
+                            return (
+                                <ProductItem key={product.id.value} product={product}></ProductItem>
+                            );
+                        })}
                 </Row>
-
             </ScrollView>
         </CategoryContainer>
 
@@ -40,7 +27,6 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
 
 const CategoryContainer = styled.View`
     flex:1;
@@ -64,4 +50,9 @@ const Category = styled.View<CategoryProps>`
 const CategoryTitle = styled.Text<CategoryProps>`
     color: #3B3B3B; 
     font-size: 14px;
+`;
+
+
+const MasonryItem = styled.View<View>`
+    background-color: #00ff00;
 `;
