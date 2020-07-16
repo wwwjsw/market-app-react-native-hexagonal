@@ -10,9 +10,17 @@ import {Category} from "../../../../domain/category/Category";
 import {Product} from "../../../../domain/product/Product";
 import {HomeView} from "./HomeView";
 import AppContext from "../../AppContext";
+import {StackNavigationProp} from "@react-navigation/stack/lib/typescript/src/types";
+import {RootStackParamList} from "../../Main";
+import {Uuid} from "../../../../domain/shared/Uuid";
 
-const HomeScreen = () => {
 
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+type HomeScreenProps = {
+    navigation: HomeScreenNavigationProp;
+};
+
+const HomeScreen = (props: HomeScreenProps) => {
     const appContext = useContext(AppContext);
 
     const [categories, setCategories] = useState<Category[]>([]);
@@ -21,6 +29,12 @@ const HomeScreen = () => {
     const homeView: HomeView = {
         showCategories: setCategories,
         showProducts: setProducts
+    };
+
+    const onProductSelect = (productId: Uuid) => {
+        props.navigation.navigate('Product', {
+            productId
+        });
     };
 
     const onHomeScreenRender = new OnHomeScreenRender(homeView, appContext.provider.findAllCategories, appContext.provider.findAllProducts);
@@ -35,7 +49,7 @@ const HomeScreen = () => {
                 <Text>aca va el buscador</Text>
                 <TitleComponent>Recently Added</TitleComponent>
                 <CategoryList categories={categories}/>
-                <ProductList products={products}/>
+                <ProductList products={products} onProductSelect={onProductSelect}/>
             </SafeArea>
         </Page>
     );

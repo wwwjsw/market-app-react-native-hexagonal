@@ -1,26 +1,31 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import {Product} from "../../../../../domain/product/Product";
+import {TouchableHighlight} from "react-native";
+import {Uuid} from "../../../../../domain/shared/Uuid";
 
 type ProductItemProps = {
     product: Product;
+    onProductSelect: (productId: Uuid) => void;
 }
 
 export const ProductItem = (props: ProductItemProps) => {
     return (
-        <ProductContainer>
-            <ProductImage source={{uri: props.product.images[0]}} ></ProductImage>
-            <ProductName>{props.product.title.value}</ProductName>
-            <ProductPrice>
-                <ProductPriceSign>$</ProductPriceSign>
-                <ProductPriceValue>{props.product.value.value}</ProductPriceValue>
-            </ProductPrice>
-        </ProductContainer>
+        <TouchableHighlight style={{width: '50%'}} onPress={() => { props.onProductSelect(props.product.id)}} underlayColor="white">
+            <ProductContainer>
+                <ProductImage source={{uri: props.product.images[0]}} ></ProductImage>
+                <ProductName>{props.product.title.value}</ProductName>
+                <ProductPrice>
+                    <ProductPriceSign>$</ProductPriceSign>
+                    <ProductPriceValue>{props.product.value.value}</ProductPriceValue>
+                </ProductPrice>
+            </ProductContainer>
+        </TouchableHighlight>
     );
 };
 
 const ProductContainer = styled.View`
-    width: 50%;
+    width: 100%;
     padding: 5px;
 `;
 
