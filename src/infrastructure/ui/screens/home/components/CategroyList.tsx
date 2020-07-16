@@ -38,7 +38,6 @@ export default CategoryList;
 
 const CategoryContainer = styled.View`
     height: 29px;
-    background-color: #ff0000;
 `;
 
 

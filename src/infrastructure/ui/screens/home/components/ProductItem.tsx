@@ -7,16 +7,17 @@ type ProductItemProps = {
 }
 
 export const ProductItem = (props: ProductItemProps) => {
-    console.log('productItem', props.product);
-    console.log('img', props.product.images[0]);
     return (
         <ProductContainer>
             <ProductImage source={{uri: props.product.images[0]}} ></ProductImage>
             <ProductName>{props.product.title.value}</ProductName>
+            <ProductPrice>
+                <ProductPriceSign>$</ProductPriceSign>
+                <ProductPriceValue>{props.product.value.value}</ProductPriceValue>
+            </ProductPrice>
         </ProductContainer>
     );
 };
-
 
 const ProductContainer = styled.View`
     width: 50%;
@@ -31,5 +32,22 @@ const ProductImage = styled.Image`
 `;
 
 const ProductName = styled.Text`
-    font-size: 20px;
+    font-size: 12px;
+    color: #A9A9B0;
+`;
+
+const ProductPrice= styled.View`
+    flex-direction: row;
+`;
+
+const ProductPriceSign= styled.Text`
+    font-size: 12px;
+    color: #A9A9B0;
+    margin-right: 3px;
+`;
+
+const ProductPriceValue= styled.Text`
+    font-size: 14px;
+    font-weight: bold;
+    color: #3B3B3B;
 `;
