@@ -9,9 +9,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/app/assets/icon.png",
     "splash": {
-      "image": "./src/infrastructure/ui/assets/background.png",
+      "image": "./src/app/assets/background.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

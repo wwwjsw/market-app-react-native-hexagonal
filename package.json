@@ -44,9 +44,8 @@
             "./test/setupTests.ts"
         ],
         "collectCoverageFrom": [
-            "src/application/**/*.{js,jsx,ts,tsx}",
-            "src/domain/**/*.{js,jsx,ts,tsx}",
-            "src/infrastructure/**/*Presenter.{js,jsx,ts,tsx}"
+            "src/core/**/application/*.{js,jsx,ts,tsx}",
+            "src/core/**/domian/*.{js,jsx,ts,tsx}"
         ]
     }
 }
