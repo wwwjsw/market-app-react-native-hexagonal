@@ -15,22 +15,22 @@ export class InMemoryProductRepository implements ProductRepository {
 
     findAll(): Promise<Product[]> {
         return Promise.resolve(
-            this._database.splice(0)
+            this._database.slice(0)
         );
     }
 
     findByCategory(categoryId: Uuid): Promise<Product[]> {
-        const products = this._database.splice(0).filter((product) => product.categoryId.equals(categoryId));
+        const products = this._database.slice(0).filter((product) => product.categoryId.equals(categoryId));
         return Promise.resolve(products);
     }
 
     findById(id: Uuid): Promise<Product | undefined> {
-        const product = this._database.splice(0).find((product) => product.id.equals(id));
+        const product = this._database.slice(0).find((product) => product.id.equals(id));
         return Promise.resolve(product);
     }
 
     findByUser(userId: Uuid): Promise<Product[]> {
-        const products = this._database.splice(0).filter((product) => product.userId.equals(userId));
+        const products = this._database.slice(0).filter((product) => product.userId.equals(userId));
         return Promise.resolve(products);
     }
 

@@ -1,9 +1,8 @@
-import {SignIn} from "../../../../application/user/SignIn";
 import {HomeView} from "./HomeView";
 import {FindAllCategories} from "../../../../application/category/FindAllCategories";
 import {FindAllProducts} from "../../../../application/market/FindAllProducts";
 
-export class OnHomeScreenRender {
+export class OnScreenRenderPresenter {
     private view: HomeView;
     private findAllCategories: FindAllCategories;
     private findAllProducts: FindAllProducts;

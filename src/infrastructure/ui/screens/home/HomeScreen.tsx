@@ -5,7 +5,6 @@ import {TitleComponent} from "../../components/TitleComponent";
 import CategoryList from "./components/CategroyList";
 import {Page} from "../../components/styled/Page";
 import ProductList from "./components/ProductList";
-import {OnHomeScreenRender} from "./OnHomeScreenRender";
 import {Category} from "../../../../domain/category/Category";
 import {Product} from "../../../../domain/product/Product";
 import {HomeView} from "./HomeView";
@@ -13,7 +12,7 @@ import AppContext from "../../AppContext";
 import {StackNavigationProp} from "@react-navigation/stack/lib/typescript/src/types";
 import {RootStackParamList} from "../../Main";
 import {Uuid} from "../../../../domain/shared/Uuid";
-
+import {OnScreenRenderPresenter} from "./OnScreenRenderPresenter";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 type HomeScreenProps = {
@@ -37,10 +36,10 @@ const HomeScreen = (props: HomeScreenProps) => {
         });
     };
 
-    const onHomeScreenRender = new OnHomeScreenRender(homeView, appContext.provider.findAllCategories, appContext.provider.findAllProducts);
+    const onScreenRenderPresenter = new OnScreenRenderPresenter(homeView, appContext.provider.findAllCategories, appContext.provider.findAllProducts);
 
     useEffect(() => {
-        onHomeScreenRender.handle();
+        onScreenRenderPresenter.handle();
     }, []);
 
     return (

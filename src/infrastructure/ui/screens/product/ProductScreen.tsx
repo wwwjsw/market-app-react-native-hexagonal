@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Page} from "../../components/styled/Page";
 import {SafeArea} from "../../components/SafeArea";
 import styled from "styled-components/native";
@@ -6,6 +6,9 @@ import {StackNavigationProp} from "@react-navigation/stack/lib/typescript/src/ty
 import {RootStackParamList} from "../../Main";
 import {RouteProp} from '@react-navigation/native';
 import AppContext from "../../AppContext";
+import {Product} from "../../../../domain/product/Product";
+import {OnScreenRenderPresenter} from "./OnScreenRenderPresenter";
+import {ProductView} from "./ProductView";
 
 type ProductScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Product'>;
 type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Product'>;
@@ -18,31 +21,36 @@ type ProductScreenProps = {
 const ProductScreen = (props: ProductScreenProps) => {
     const appContext = useContext(AppContext);
 
+    const [product, setProduct] = useState<Product>();
 
+    const view: ProductView = {
+        showProduct: setProduct
+    };
 
-    console.log(props.route.params.productId);
+    const onScreenRenderPresenter = new OnScreenRenderPresenter(view, appContext.provider.findProductById);
 
-
-
+    useEffect(() => {
+        onScreenRenderPresenter.handle(props.route.params.productId);
+    }, []);
 
     return (
         <Page>
-            <ProductImage />
-            <SafeArea>
-                <ProductLocation>Chennai, India,  2h ago</ProductLocation>
-                <ProductTitleContainer>
-                    <ProductTitleLabel>DJI Spark</ProductTitleLabel>
-                    <ProductValueContainer>
-                        <ProductValueSign>$</ProductValueSign>
-                        <ProductValueValue>5000</ProductValueValue>
-                    </ProductValueContainer>
-                </ProductTitleContainer>
-                <ProductDescription>
-                    Selling my 2017 DJI Spark. Barely used, pretty new in condition and its the “Fly More Combo". No Negotiations please.
-                    {'\n'} {'\n'}
-                    Seize the Moment. Meet Spark, a mini drone that features all of DJI's signature technologies, allowing you to seize the moment whenever you feel inspired.
-                </ProductDescription>
-            </SafeArea>
+            {product &&
+                <>
+                    <ProductImage source={{uri: product.images[0]}} />
+                    <SafeArea>
+                        <ProductLocation>Chennai, India,  2h ago</ProductLocation>
+                        <ProductTitleContainer>
+                            <ProductTitleLabel>{product.title.value}</ProductTitleLabel>
+                            <ProductValueContainer>
+                                <ProductValueSign>$</ProductValueSign>
+                                <ProductValueValue>{product.value.value}</ProductValueValue>
+                            </ProductValueContainer>
+                        </ProductTitleContainer>
+                        <ProductDescription>{product.description.value}</ProductDescription>
+                    </SafeArea>
+                </>
+            }
         </Page>
     );
 };
@@ -51,8 +59,7 @@ export default ProductScreen;
 
 
 
-const ProductImage = styled.View`
-    background-color: red;
+const ProductImage = styled.Image`
     height: 50%;
 `;
 
