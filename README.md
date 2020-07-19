@@ -3,15 +3,31 @@ This project was made as a learning process of DDD (tactical design), Hexagonal 
 
 ## Project Structure (Modules)
 ```
-.
-├── src
-│   ├── application        --> (what it does) here are the applications services/uses cases/actions.
-│   ├── domain             --> (what is about) here are the entities and value objectes.
-│   └── infrastructure     --> Classes related to the delivery mechanism (React Native), frameworks or libraries.
-└── test
-    ├── application        --> Test for the application services
-    ├── domain             --> Test for the entities and value objects.
-    └── infrastructure     --> Test for the infrastructure
+ .
+ |-- src               
+ |   |-- app            --> Module for the delivery mechanism (React Native)
+ |   `-- core           --> Module for the use cases, domain and repositories
+ `-- test
+     |-- app_test       --> Acceptant tests
+     `-- core_test      --> Unit tests
+```
+
+
+```
+ .
+ |-- src
+ |   |-- app
+ |   `-- core
+ |       |-- category
+ |       |   |-- application        --> (what it does) here are the applications services/uses cases/actions.
+ |       |   |-- domain             --> (what is about) here are the entities and value objectes.
+ |       |   `-- infrastructure     --> Repository implementations and classes related to frameworks or libraries.
+ |       |-- product
+ |       |-- shared
+ |       `-- user
+ `-- test
+     |-- app_test
+     `-- core_test
 ```
 
 ## Development
