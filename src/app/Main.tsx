@@ -28,7 +28,7 @@ export default function Main() {
                     <Stack.Screen name="SignIn" component={SignInScreen} options={{headerShown: false}}/>
                     <Stack.Screen name="SignUp" component={SignUpScreen}/>
                     <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-                    <Stack.Screen name="Product" component={ProductScreen} options={{headerShown: true}}/>
+                    <Stack.Screen name="Product" component={ProductScreen} options={{headerShown: false}}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </AppContext.Provider>

@@ -39,15 +39,25 @@ const ProductScreen = (props: ProductScreenProps) => {
                 <>
                     <ProductImage source={{uri: product.images[0]}} />
                     <SafeArea>
-                        <ProductLocation>Chennai, India,  2h ago</ProductLocation>
-                        <ProductTitleContainer>
-                            <ProductTitleLabel>{product.title.value}</ProductTitleLabel>
-                            <ProductValueContainer>
-                                <ProductValueSign>$</ProductValueSign>
-                                <ProductValueValue>{product.value.value}</ProductValueValue>
-                            </ProductValueContainer>
-                        </ProductTitleContainer>
-                        <ProductDescription>{product.description.value}</ProductDescription>
+                        <ProductContent>
+                            <ProductScroll>
+                                <ProductLocation>Chennai, India,  2h ago</ProductLocation>
+                                <ProductTitleContainer>
+                                    <ProductTitleLabel>{product.title.value}</ProductTitleLabel>
+                                    <ProductValueContainer>
+                                        <ProductValueSign>$</ProductValueSign>
+                                        <ProductValueValue>{product.value.value}</ProductValueValue>
+                                    </ProductValueContainer>
+                                </ProductTitleContainer>
+                                <ProductLineSeparator />
+                                <ProductDescription>{product.description.value}</ProductDescription>
+                                <ProductLineSeparator />
+                            </ProductScroll>
+                            <ProductFooter>
+                                <ProductDescription>{product.description.value}</ProductDescription>
+                            </ProductFooter>
+
+                        </ProductContent>
                     </SafeArea>
                 </>
             }
@@ -57,6 +67,14 @@ const ProductScreen = (props: ProductScreenProps) => {
 
 export default ProductScreen;
 
+const ProductScroll = styled.ScrollView`
+    padding: 20px;
+`;
+
+const ProductContent = styled.View`
+    flex: 1;
+    justify-content: space-between;
+`;
 
 
 const ProductImage = styled.Image`
@@ -71,6 +89,7 @@ const ProductLocation= styled.Text`
 const ProductTitleContainer = styled.View`
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 13px;
 `;
 
 const ProductTitleLabel = styled.Text`
@@ -81,6 +100,15 @@ const ProductTitleLabel = styled.Text`
 
 const ProductValueContainer = styled.View`
     flex-direction: row;
+`;
+
+const ProductLineSeparator = styled.View`
+    height: 1px;
+    width: 100%;
+    background-color: #979797;
+    margin-top: 21px;
+    margin-bottom: 21px;
+    opacity: 0.1;
 `;
 
 const ProductValueSign = styled.Text`
@@ -98,4 +126,10 @@ const ProductValueValue = styled.Text`
 const ProductDescription = styled.Text`
     color: #A9A9B0;
     font-size: 12px;
+`;
+
+
+const ProductFooter = styled.View`
+    background-color: #A9A9B0;
+    height: 30px;
 `;

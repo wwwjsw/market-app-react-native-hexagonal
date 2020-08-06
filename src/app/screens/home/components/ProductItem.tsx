@@ -31,7 +31,7 @@ const ProductContainer = styled.View`
 
 const ProductImage = styled.Image`
     align-self: center;
-    width:100%;
+    width: 100%;
     height: 200px;
     border-radius: 15px;
 `;
@@ -39,10 +39,14 @@ const ProductImage = styled.Image`
 const ProductName = styled.Text`
     font-size: 12px;
     color: #A9A9B0;
+    margin-top: 15px;
+    margin-left: 15px;
 `;
 
 const ProductPrice= styled.View`
     flex-direction: row;
+    margin-top: 6px;
+    margin-left: 15px;
 `;
 
 const ProductPriceSign= styled.Text`
