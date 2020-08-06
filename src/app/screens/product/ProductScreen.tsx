@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {Text} from 'react-native';
 import {Page} from "../../components/styled/Page";
 import {SafeArea} from "../../components/SafeArea";
 import styled from "styled-components/native";
@@ -9,6 +10,7 @@ import AppContext from "../../AppContext";
 import {Product} from "../../../core/product/domain/Product";
 import {OnScreenRenderPresenter} from "./OnScreenRenderPresenter";
 import {ProductView} from "./ProductView";
+import {ProductButton} from "./components/ProductButton";
 
 type ProductScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Product'>;
 type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Product'>;
@@ -54,7 +56,9 @@ const ProductScreen = (props: ProductScreenProps) => {
                                 <ProductLineSeparator />
                             </ProductScroll>
                             <ProductFooter>
-                                <ProductDescription>{product.description.value}</ProductDescription>
+                                <ProductSellerContainer></ProductSellerContainer>
+                                <ProductButton label="Message" />
+                                <ProductButton label='Buy Now' dark />
                             </ProductFooter>
 
                         </ProductContent>
@@ -130,6 +134,13 @@ const ProductDescription = styled.Text`
 
 
 const ProductFooter = styled.View`
+    flex-direction: row;
+    justify-content: space-around;
+`;
+
+const ProductSellerContainer = styled.View`
     background-color: #A9A9B0;
     height: 30px;
 `;
+
+
